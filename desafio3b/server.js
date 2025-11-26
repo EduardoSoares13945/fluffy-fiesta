@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3333;
 const HOST_ENV = process.env.HOST || 'localhost';
 const LISTEN_HOST = (HOST_ENV === 'localhost' || HOST_ENV === '127.0.0.1') ? HOST_ENV : '0.0.0.0';
 
