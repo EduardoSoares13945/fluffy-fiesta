@@ -1,8 +1,9 @@
 // Camada de integração com backend Node.js
 // API REST para CRUD de jogos
 
-// Altere para o IP da sua máquina quando testar em dispositivo físico
-const API_URL = 'http://localhost:3000';
+// Lê URL da API do arquivo .env
+// Para testar em dispositivo físico, altere EXPO_PUBLIC_API_URL no .env
+const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
 
 export type Game = {
   id: number;

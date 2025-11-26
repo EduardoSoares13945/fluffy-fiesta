@@ -1,8 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+// Se HOST for um IP ou hostname diferente de localhost, usamos 0.0.0.0 para escutar em todas as interfaces
+// Isso evita falhas de binding em alguns ambientes Windows.
+const HOST_ENV = process.env.HOST || 'localhost';
+const LISTEN_HOST = (HOST_ENV === 'localhost' || HOST_ENV === '127.0.0.1') ? HOST_ENV : '0.0.0.0';
 
 // Middlewares
 app.use(cors());
@@ -140,7 +145,10 @@ app.get('/health', (req, res) => {
 });
 
 // Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`🚀 Backend rodando em http://localhost:${PORT}`);
+app.listen(PORT, LISTEN_HOST, () => {
+  console.log(`🚀 Backend rodando em http://${HOST_ENV}:${PORT}`);
   console.log(`📊 Jogos iniciais: ${games.length}`);
+  if (HOST_ENV !== 'localhost' && HOST_ENV !== '127.0.0.1') {
+    console.log(`📱 Atualize EXPO_PUBLIC_API_URL em desafio3F/.env para: http://${HOST_ENV}:${PORT}`);
+  }
 });

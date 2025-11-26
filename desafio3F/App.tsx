@@ -177,6 +177,7 @@ export default function App() {
             value={titulo}
             onChangeText={setTitulo}
             style={styles.input}
+            placeholderTextColor="#A9B6F7"
             returnKeyType="next"
           />
           <TextInput
@@ -184,6 +185,7 @@ export default function App() {
             value={plataforma}
             onChangeText={setPlataforma}
             style={styles.input}
+            placeholderTextColor="#A9B6F7"
             returnKeyType="next"
           />
           <TextInput
@@ -191,6 +193,7 @@ export default function App() {
             value={genero}
             onChangeText={setGenero}
             style={styles.input}
+            placeholderTextColor="#A9B6F7"
             returnKeyType="next"
           />
           <View style={styles.row}>
@@ -201,6 +204,7 @@ export default function App() {
               style={[styles.input, styles.inputHalf]}
               keyboardType="number-pad"
               maxLength={4}
+              placeholderTextColor="#A9B6F7"
             />
             <TextInput
               placeholder="Nota (0-10)"
@@ -208,6 +212,7 @@ export default function App() {
               onChangeText={(t) => setNota(t.replace(/[^0-9.,]/g, '').replace(',', '.'))}
               style={[styles.input, styles.inputHalf]}
               keyboardType="decimal-pad"
+              placeholderTextColor="#A9B6F7"
             />
           </View>
 
@@ -245,7 +250,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: '#0b1020' },
+  safe: { flex: 1, backgroundColor: '#0b1020', paddingTop: Platform.OS === 'android' ? 24 : 0 },
   container: {
     flex: 1,
     paddingHorizontal: 16,
