@@ -1,8 +1,3 @@
-// Camada de integração com backend Node.js
-// API REST para CRUD de jogos
-
-// Lê URL da API do arquivo .env
-// Para testar em dispositivo físico, altere EXPO_PUBLIC_API_URL no .env
 const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
 
 export type Game = {
@@ -23,7 +18,6 @@ async function handleResponse<T>(response: Response): Promise<T> {
     throw new Error(error.error || error.errors?.join(', ') || 'Erro na requisição');
   }
   
-  // DELETE retorna 204 sem body
   if (response.status === 204) {
     return undefined as T;
   }
